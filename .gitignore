@@ -105,3 +105,9 @@ venv.bak/
 
 # MacOS
 .DS_Store
+
+# Ignore secrets
+secrets.py
+
+# Ignore test data
+test_data/

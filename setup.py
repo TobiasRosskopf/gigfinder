@@ -4,8 +4,8 @@
 # File name:    setup.py
 # Author:       Tobias Rosskopf
 # Email:        tobirosskopf@gmail.com
-# Created:      ??.??.2019
-# Modified:     ??.??.2019
+# Created:      27.11.2019
+# Modified:     27.11.2019
 
 
 """
@@ -19,8 +19,12 @@ Setup docstring
 from setuptools import setup
 
 # Constants
-PACKAGE_NAME = 'package_name'
-PACKAGE_LIST = ['package_name',]
+PACKAGE_NAME = 'gigfinder'
+PACKAGE_LIST = [
+    'gigfinder',
+    'geocoder.py',
+    'shpwriter.py',
+    ]
 
 with open("README.md", 'r') as f:
     long_description = f.read()
