@@ -15,15 +15,15 @@ Module's docstring
 # Standard imports
 import sqlite3
 import urllib.parse
-import urllib.request
+# import urllib.request
 
 # Third party imports
 import requests
 from bs4 import BeautifulSoup
 
 # Package imports
-import geocoder
-import shpwriter
+from gigfinder.geocoder import address_to_lat_lng
+from gigfinder.shpwriter import lat_lng_to_shp
 
 # TODO: urllib --> requests!!!!
 
@@ -57,9 +57,11 @@ def main():
 
             url = "http://www.kirmeskalender.de/liste.php?{}".format(urllib.parse.urlencode(url_args))
             # print(url)
-            request = urllib.request.urlopen(url)
-            html = request.read()
-            soup = BeautifulSoup(html, "html.parser")
+            # request = urllib.request.urlopen(url)
+            response = requests.get(url)
+            response.raise_for_status()
+            #html = request.read()
+            soup = BeautifulSoup(response.text, "html.parser")
             
             # with open("out.html", "w") as f:
             #     f.write(str(soup))
@@ -77,7 +79,7 @@ def main():
 
                     print("{0} {1} - {2} - {3}".format(plz, ort, termin, org))
 
-                    lat, lng = geocoder.address_to_lat_lng(plz=plz, country="Germany")
+                    lat, lng = address_to_lat_lng(plz=plz, country="Germany")
                     list_lat_lng.append((float(lat), float(lng)))
                     # print("{0:.6f}, {1:.6f}".format(lat, lng))
 
@@ -89,7 +91,7 @@ def main():
     conn.commit()
     conn.close()
 
-    shpwriter.lat_lng_to_shp(list_lat_lng)
+    lat_lng_to_shp(list_lat_lng)
 
 
 if __name__ == '__main__':
