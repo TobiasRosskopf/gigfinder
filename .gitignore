@@ -111,3 +111,6 @@ secrets.py
 
 # Ignore test data
 test_data/
+
+# Ignore VS Code
+.vscode/
