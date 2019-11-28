@@ -19,7 +19,7 @@ Module's docstring
 from opencage.geocoder import OpenCageGeocode
 
 # Package imports
-from gigfinder.secrets import OPENCAGE_APIKEY
+from secrets import OPENCAGE_APIKEY
 
 
 # Get API key and create geocoder

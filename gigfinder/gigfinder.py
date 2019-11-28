@@ -15,15 +15,15 @@ Module's docstring
 # Standard imports
 import sqlite3
 import urllib.parse
-# import urllib.request
+import urllib.request
 
 # Third party imports
 import requests
 from bs4 import BeautifulSoup
 
 # Package imports
-from gigfinder.geocoder import address_to_lat_lng
-from gigfinder.shpwriter import lat_lng_to_shp
+import geocoder
+import shpwriter
 
 # TODO: urllib --> requests!!!!
 
@@ -60,7 +60,7 @@ def main():
             # request = urllib.request.urlopen(url)
             response = requests.get(url)
             response.raise_for_status()
-            #html = request.read()
+            # html = request.read()
             soup = BeautifulSoup(response.text, "html.parser")
             
             # with open("out.html", "w") as f:
@@ -79,7 +79,7 @@ def main():
 
                     print("{0} {1} - {2} - {3}".format(plz, ort, termin, org))
 
-                    lat, lng = address_to_lat_lng(plz=plz, country="Germany")
+                    lat, lng = geocoder.address_to_lat_lng(plz=plz, country="Germany")
                     list_lat_lng.append((float(lat), float(lng)))
                     # print("{0:.6f}, {1:.6f}".format(lat, lng))
 
@@ -91,7 +91,7 @@ def main():
     conn.commit()
     conn.close()
 
-    lat_lng_to_shp(list_lat_lng)
+    shpwriter.lat_lng_to_shp(list_lat_lng)
 
 
 if __name__ == '__main__':
