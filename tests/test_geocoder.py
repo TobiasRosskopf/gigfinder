@@ -19,7 +19,7 @@ import gigfinder.geocoder
 
 
 class TestGeocoder(unittest.TestCase):
-    """TODO: Testclass's docstring"""
+    """TODO: Testclass' docstring"""
 
     def test_address_to_lat_lng_all(self):
         """TODO: Test's docstring"""

@@ -111,6 +111,10 @@ secrets.py
 
 # Ignore test data
 test_data/
+*.sqlite3
+*dbf
+*shp
+*shx
 
 # Ignore VS Code
 .vscode/

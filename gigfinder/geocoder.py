@@ -19,11 +19,11 @@ Module's docstring
 from opencage.geocoder import OpenCageGeocode
 
 # Package imports
-from secrets import OPENCAGE_APIKEY
+import secrets
 
 
 # Get API key and create geocoder
-geocoder = OpenCageGeocode(OPENCAGE_APIKEY)
+geocoder = OpenCageGeocode(secrets.get_opencage_apikey())
 
 
 def address_to_lat_lng(street="", nr="", plz="", city="", country=""):
