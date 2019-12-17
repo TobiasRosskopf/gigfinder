@@ -116,5 +116,6 @@ test_data/
 *shp
 *shx
 
-# Ignore VS Code
+# Ignore VS Code and PyChram
 .vscode/
+.idea/

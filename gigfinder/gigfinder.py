@@ -21,8 +21,8 @@ import requests
 from bs4 import BeautifulSoup
 
 # Package imports
-import geocoder
-import shpwriter
+from gigfinder import geocoder
+from gigfinder import shpwriter
 
 
 def main():

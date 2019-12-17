@@ -15,7 +15,7 @@ Unittests for module geocoder.py.
 import unittest
 
 # Package imports
-import gigfinder.geocoder
+from gigfinder import geocoder
 
 
 class TestGeocoder(unittest.TestCase):
@@ -28,13 +28,13 @@ class TestGeocoder(unittest.TestCase):
         plz = 64297
         city = "Darmstadt"
         coords = (49.8169801, 8.641946)
-        self.assertEqual(gigfinder.geocoder.address_to_lat_lng(street=street, nr=nr, plz=plz, city=city), coords)
+        self.assertEqual(geocoder.address_to_lat_lng(street=street, nr=nr, plz=plz, city=city), coords)
 
     def test_address_to_lat_lng_city(self):
         """TODO: Test's docstring"""
         city = "Darmstadt"
         coords = (49.872775, 8.651177)
-        self.assertEqual(gigfinder.geocoder.address_to_lat_lng(city=city), coords)
+        self.assertEqual(geocoder.address_to_lat_lng(city=city), coords)
 
 
 if __name__ == '__main__':
